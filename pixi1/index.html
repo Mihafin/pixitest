@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/utils/text_utils.js"></script>
     <script type="text/javascript" src="js/utils/fullscreen.js"></script>
     <script type="text/javascript" src="js/utils/event_mix.js"></script>
+    <script type="text/javascript" src="js/utils/storage.js"></script>
 
     <script type="text/javascript" src="js/objects/dragon.js"></script>
 
@@ -31,7 +32,7 @@
             var size = Game.get_size();
 
             //renderer
-            PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
+//            PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
             var renderer = PIXI.autoDetectRenderer(size.w, size.h, {backgroundColor : 0x1099bb});
             Game.canvas_container.appendChild(renderer.view);
 

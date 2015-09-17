@@ -6,6 +6,9 @@ var Scene = function(){
     var gf = new PIXI.filters.GrayFilter(); gf.gray = 0.2;
     this.blur_filter = [gf, bf];
     this.filter_add = false;
+
+    this.scale_factor = 0.5;
+    this.game_scale = 1;
 };
 
 Scene.prototype = Object.create(PIXI.Container.prototype);
@@ -50,6 +53,22 @@ Scene.prototype.init = function(){
     this.addChild(this.wnd_layer);
 
     this.on_resize();
+    this.restore_scene();
+};
+
+
+Scene.prototype.restore_scene = function () {
+    this.game_scale = Number(Game.utils.store.get("zoom")) || 1;
+    this.apply_scale();
+
+    var pos = JSON.parse(Game.utils.store.get("scene_pos"));
+    if (pos && Number(pos.x) != 0){
+        this.field.x = pos.x;
+        this.field.y = pos.y;
+    }
+    else{
+        //todo set to center
+    }
 };
 
 Scene.prototype.on_resize = function(){
@@ -65,6 +84,7 @@ Scene.prototype.on_mousedown = function (mouse){
 
 Scene.prototype.on_mouseup = function (mouse){
     //console.log("up", mouse.data.global);
+    Game.utils.store.set("scene_pos", JSON.stringify(this.field.position));
     this.pressed_point = null;
 };
 
@@ -105,4 +125,23 @@ Scene.prototype.on_window_hide = function(last){
 
 Scene.prototype.fulscreen_toggle = function (){
     Game.fullscreen_toggle();
+};
+
+Scene.prototype.zoom_in = function (){
+    if (this.game_scale >= 1.5) return;
+    this.game_scale += this.scale_factor;
+    this.apply_scale();
+    Game.utils.store.set("zoom", this.game_scale);
+};
+
+Scene.prototype.zoom_out = function (){
+    if (this.game_scale <= 0.5) return;
+    this.game_scale -= this.scale_factor;
+    this.apply_scale();
+    Game.utils.store.set("zoom", this.game_scale);
+};
+
+Scene.prototype.apply_scale = function (){
+    Game.scene.field.scale.set(this.game_scale);
+    Game.scene.back.back.tileScale.set(this.game_scale);
 };

@@ -1,7 +1,8 @@
 var Game = {
     canvas_container: document.getElementById("content"),
     utils: {
-        text: new TextUtils()
+        text: new TextUtils(),
+        store: new Storage()
     },
     get_size: function (){
         var w = this.canvas_container.offsetWidth;

@@ -50,13 +50,9 @@ RightGui.prototype.fulscreen_click = function(){
 };
 
 RightGui.prototype.zoom_in_click = function(){
-    //console.log(Game.scene.field.scale);
-    if (Game.scene.field.scale.x >= 2) return;
-    Game.scene.field.scale.set(Game.scene.field.scale.x + 0.1);
+    Game.scene.zoom_in();
 };
 
 RightGui.prototype.zoom_out_click = function(){
-    //console.log(Game.scene.field.scale);
-    if (Game.scene.field.scale.x <= 0.5) return;
-    Game.scene.field.scale.set(Game.scene.field.scale.x - 0.1);
+    Game.scene.zoom_out();
 };
