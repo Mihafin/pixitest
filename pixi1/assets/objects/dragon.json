@@ -1,0 +1,332 @@
+{"frames": {
+
+"FontanVietnam_anim_0000.png":
+{
+	"frame": {"x":2,"y":982,"w":155,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":101,"w":155,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0001.png":
+{
+	"frame": {"x":2,"y":1122,"w":155,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":101,"w":155,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0002.png":
+{
+	"frame": {"x":2,"y":1262,"w":155,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":101,"w":155,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0003.png":
+{
+	"frame": {"x":169,"y":1539,"w":156,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":102,"w":156,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0004.png":
+{
+	"frame": {"x":159,"y":1400,"w":159,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":102,"w":159,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0005.png":
+{
+	"frame": {"x":315,"y":1119,"w":160,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":102,"w":160,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0006.png":
+{
+	"frame": {"x":159,"y":1262,"w":161,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":103,"w":161,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0007.png":
+{
+	"frame": {"x":164,"y":421,"w":163,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":103,"w":163,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0008.png":
+{
+	"frame": {"x":162,"y":841,"w":163,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":103,"w":163,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0009.png":
+{
+	"frame": {"x":166,"y":2,"w":164,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":103,"w":164,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0010.png":
+{
+	"frame": {"x":2,"y":1542,"w":165,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":165,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0011.png":
+{
+	"frame": {"x":2,"y":1681,"w":165,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":165,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0012.png":
+{
+	"frame": {"x":162,"y":702,"w":165,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":165,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0013.png":
+{
+	"frame": {"x":163,"y":562,"w":164,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":164,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0014.png":
+{
+	"frame": {"x":164,"y":282,"w":164,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":102,"w":164,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0015.png":
+{
+	"frame": {"x":166,"y":140,"w":163,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":102,"w":163,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0016.png":
+{
+	"frame": {"x":2,"y":2,"w":162,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":101,"w":162,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0017.png":
+{
+	"frame": {"x":2,"y":142,"w":161,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":101,"w":161,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0018.png":
+{
+	"frame": {"x":2,"y":282,"w":160,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":101,"w":160,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0019.png":
+{
+	"frame": {"x":2,"y":422,"w":160,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":101,"w":160,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0020.png":
+{
+	"frame": {"x":2,"y":562,"w":159,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":101,"w":159,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0021.png":
+{
+	"frame": {"x":2,"y":702,"w":158,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":101,"w":158,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0022.png":
+{
+	"frame": {"x":2,"y":842,"w":156,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":101,"w":156,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0023.png":
+{
+	"frame": {"x":2,"y":1402,"w":155,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":101,"w":155,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0024.png":
+{
+	"frame": {"x":315,"y":979,"w":153,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":101,"w":153,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0025.png":
+{
+	"frame": {"x":322,"y":1258,"w":152,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":102,"w":152,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0026.png":
+{
+	"frame": {"x":323,"y":1678,"w":151,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":102,"w":151,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0027.png":
+{
+	"frame": {"x":329,"y":421,"w":149,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":149,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0028.png":
+{
+	"frame": {"x":330,"y":279,"w":148,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":148,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0029.png":
+{
+	"frame": {"x":329,"y":560,"w":148,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":148,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0030.png":
+{
+	"frame": {"x":329,"y":699,"w":148,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":102,"w":148,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0031.png":
+{
+	"frame": {"x":331,"y":140,"w":147,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":103,"w":147,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0032.png":
+{
+	"frame": {"x":320,"y":1817,"w":148,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":103,"w":148,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0033.png":
+{
+	"frame": {"x":169,"y":1817,"w":149,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":103,"w":149,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0034.png":
+{
+	"frame": {"x":327,"y":841,"w":150,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":103,"w":150,"h":136},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0035.png":
+{
+	"frame": {"x":327,"y":1539,"w":151,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":102,"w":151,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0036.png":
+{
+	"frame": {"x":169,"y":1678,"w":152,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":102,"w":152,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0037.png":
+{
+	"frame": {"x":320,"y":1400,"w":153,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":102,"w":153,"h":137},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0038.png":
+{
+	"frame": {"x":159,"y":982,"w":154,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":101,"w":154,"h":138},
+	"sourceSize": {"w":300,"h":300}
+},
+"FontanVietnam_anim_0039.png":
+{
+	"frame": {"x":159,"y":1122,"w":154,"h":138},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":101,"w":154,"h":138},
+	"sourceSize": {"w":300,"h":300}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dragon.png",
+	"format": "RGBA8888",
+	"size": {"w":480,"h":1955},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b2a2871d37660193467cc884febe3f87:4630cad96ee65e8e9207de4259deceaf:e2a99e30e68e1d890ebefd099aaa3560$"
+}
+}

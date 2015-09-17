@@ -1,0 +1,38 @@
+{"frames": {
+
+"but_fon.png":
+{
+	"frame": {"x":2,"y":315,"w":143,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":143,"h":44},
+	"sourceSize": {"w":143,"h":44},
+  	"def_x": 300,
+  	"def_y": 250
+},
+"close.png":
+{
+	"frame": {"x":147,"y":315,"w":22,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":24},
+	"sourceSize": {"w":22,"h":24}
+},
+"wnd_fon.png":
+{
+	"frame": {"x":2,"y":2,"w":571,"h":311},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":571,"h":311},
+	"sourceSize": {"w":571,"h":311}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_wnd.png",
+	"format": "RGBA8888",
+	"size": {"w":575,"h":361},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c78c34933550b73d2905e9482700c100:42d6fe1c571e9b30d60a4de8de22078d:2fed9309abe4f46a2f965918df6e7d56$"
+}
+}
