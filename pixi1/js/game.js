@@ -26,7 +26,7 @@ var Game = {
         this.stats = new Stats();
         this.stats.setMode(0);// 0: fps, 1: ms, 2: mb
         this.stats.domElement.style.position = 'absolute';
-        this.stats.domElement.style.left = '100px';
+        this.stats.domElement.style.left = '400px';
         this.stats.domElement.style.top = '0px';
         this.canvas_container.appendChild(this.stats.domElement);
         //addFulscreenEvents(this.canvas_container);

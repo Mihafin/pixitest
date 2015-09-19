@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>pixi_test_2</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <script type="text/javascript" src="js/core/pixi.js"></script>
+    <script type="text/javascript" src="js/core/stats.min.js"></script>
+    <script type="text/javascript" src="js/core/TweenLite.min.js"></script>
+    <script type="text/javascript" src="js/core/TimelineLite.min.js"></script>
+    <script type="text/javascript" src="js/core/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/core/TimelineMax.min.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script type="text/javascript" src="js/utils/text_utils.js"></script>
+    <script type="text/javascript" src="js/utils/fullscreen.js"></script>
+    <script type="text/javascript" src="js/utils/event_mix.js"></script>
+    <script type="text/javascript" src="js/utils/storage.js"></script>
+
+    <script type="text/javascript" src="js/proj2/glow_fltr.js"></script>
+
+    <script type="text/javascript" src="js/proj2/scene.js"></script>
+    <script type="text/javascript" src="js/proj2/cube.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+
+
+    <script type="text/javascript">
+        window.onload = function(){
+            Game.init();
+            var size = Game.get_size();
+
+            //renderer
+//            PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
+            var renderer = PIXI.autoDetectRenderer(size.w, size.h, {backgroundColor : 0x1099bb});
+            Game.canvas_container.appendChild(renderer.view);
+
+            //main stage
+            Game.scene = new Scene();
+            Game.scene.init();
+
+            var on_resize = function(){
+                size = Game.get_size();
+                renderer.resize(size.w, size.h);
+                Game.scene.on_resize();
+            };
+            window.addEventListener('resize', on_resize, false);
+
+            //start animation
+            animate();
+            function animate() {
+                Game.stats_begin();
+                Game.scene.animate();
+                renderer.render(Game.scene);
+                Game.stats_end();
+                requestAnimationFrame(animate);
+            }
+        }
+    </script>
+</body>
+</html>
