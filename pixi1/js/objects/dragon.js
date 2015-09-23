@@ -44,7 +44,8 @@ ObjectBase.prototype.on_load = function (frames){
 
 // ************************************************
 function Dragon() {
-    ObjectBase.call(this, 'dragon');
+    //ObjectBase.call(this, 'dragon');
+    ObjectBase.call(this, 'FontanAnim');
 }
 
 Dragon.prototype = Object.create(ObjectBase.prototype);
