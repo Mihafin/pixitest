@@ -1,11 +1,15 @@
-var Cube = function(color, col, row){
+var Cube = function(color, col, row, cell_type){
     PIXI.Container.call(this);
     this.color = color;
     this.col = col;
     this.row = row;
+    this.cell_type = cell_type;
 
     this.width = 55;
     this.height = 55;
+    this.selected = false;
+
+    if (cell_type == 0) return;
 
     var tx = PIXI.loader.resources['c'+color].texture;
     var sp = new PIXI.Sprite(tx);
@@ -17,8 +21,6 @@ var Cube = function(color, col, row){
     this.buttonMode = true;
 
     this.on("click", this.on_click.bind(this));
-
-    this.selected = false;
 };
 
 Cube.prototype = Object.create(PIXI.Container.prototype);

@@ -3,27 +3,37 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>pixi_test_2</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <script type="text/javascript" src="js/core/pixi.js"></script>
-    <script type="text/javascript" src="js/core/stats.min.js"></script>
-    <script type="text/javascript" src="js/core/TweenLite.min.js"></script>
-    <script type="text/javascript" src="js/core/TimelineLite.min.js"></script>
-    <script type="text/javascript" src="js/core/TweenMax.min.js"></script>
-    <script type="text/javascript" src="js/core/TimelineMax.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/proj2/common.css"/>
+
+    <script type="text/javascript" src="js/common/core/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/common/core/pixi.js"></script>
+    <script type="text/javascript" src="js/common/core/stats.min.js"></script>
+    <script type="text/javascript" src="js/common/core/TweenLite.min.js"></script>
+    <script type="text/javascript" src="js/common/core/TimelineLite.min.js"></script>
+    <script type="text/javascript" src="js/common/core/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/common/core/TimelineMax.min.js"></script>
 </head>
 <body>
-    <div id="content"></div>
+<div id="debug">
+    <label for="field">field</label><br/><textarea id="field" rows="9" cols="9"></textarea><br/>
+    <input type="button" value="generate" onclick="return load_field();">
+</div>
+<div id="content"></div>
 
-    <script type="text/javascript" src="js/utils/text_utils.js"></script>
-    <script type="text/javascript" src="js/utils/fullscreen.js"></script>
-    <script type="text/javascript" src="js/utils/event_mix.js"></script>
-    <script type="text/javascript" src="js/utils/storage.js"></script>
-
-    <script type="text/javascript" src="js/proj2/glow_fltr.js"></script>
+    <script type="text/javascript" src="js/common/filters/glow.js"></script>
+    <script type="text/javascript" src="js/common/utils/text_utils.js"></script>
+    <script type="text/javascript" src="js/common/utils/fullscreen.js"></script>
+    <script type="text/javascript" src="js/common/utils/event_mix.js"></script>
+    <script type="text/javascript" src="js/common/utils/storage.js"></script>
 
     <script type="text/javascript" src="js/proj2/scene.js"></script>
+    <script type="text/javascript" src="js/proj2/three_match/three_match_game.js"></script>
+    <script type="text/javascript" src="js/proj2/three_match/three_match_game_field.js"></script>
     <script type="text/javascript" src="js/proj2/cube.js"></script>
-    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/common/game.js"></script>
+
+
+
 
 
     <script type="text/javascript">
@@ -51,12 +61,21 @@
             animate();
             function animate() {
                 Game.stats_begin();
-                Game.scene.animate();
                 renderer.render(Game.scene);
                 Game.stats_end();
                 requestAnimationFrame(animate);
             }
         }
+    </script>
+    <script type="text/javascript">
+        function load_field(){
+            var con = $("#field").val();
+            var game_data = {field: con.split('\n')};
+            Game.scene.start_game(game_data);
+        }
+
+        res=[];for(var i=0;i<8;i++){res.push("11111111")}
+        $("#field").val(res.join("\n"));
     </script>
 </body>
 </html>

@@ -2,7 +2,7 @@ var Game = {
     canvas_container: document.getElementById("content"),
     utils: {
         text: new TextUtils(),
-        store: new Storage()
+        store: new GameStorage()
     },
     get_size: function (){
         var w = this.canvas_container.offsetWidth;
@@ -36,5 +36,11 @@ var Game = {
     },
     stats_end: function (){
         Game.stats.end();
+    },
+    error: function(){
+        console.log("<--Error-->:", arguments);
+    },
+    debug: function(){
+        console.log("Debug:", arguments);
     }
 };
