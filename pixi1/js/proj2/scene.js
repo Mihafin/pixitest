@@ -1,27 +1,46 @@
 var Scene = function(){
     PIXI.Container.call(this);
     this.loading = Game.utils.text.get_text("loading..");
-
+    this.game_layer = new PIXI.Container();
+    this.map_layer = new PIXI.Container();
 };
 
 Scene.prototype = Object.create(PIXI.Container.prototype);
 Scene.prototype.constructor = Scene;
 
 Scene.prototype.init = function (){
+    //var deb_text = Game.utils.text.get_text("HIHIHIHIHIHIHIHIHI", 300);
+    //deb_text.x = Game.get_size()['w']/2;
+    //deb_text.y = Game.get_size()['h']/2;
+    //this.addChild(deb_text);
+
+    this.addChild(this.game_layer);
 };
 
 Scene.prototype.start_game = function(data){
     if (this.current_game){
-        this.current_game.destroy();
-        this.removeChild(this.current_game);
+        this.game_over();
     }
 
     this.show_load();
-    this.current_game = new ThreeMatchGame();
-    this.current_game.init(data, function(){
-        this.hide_load();
-        this.addChild(this.current_game);
-    }.bind(this));
+    var game_class = this.get_game_class(data["name"]);
+    this.current_game = new game_class();
+    this.current_game.init(data, this.game_inited.bind(this), this.game_over.bind(this));
+};
+
+Scene.prototype.game_inited = function(){
+    this.hide_load();
+    this.game_layer.addChild(this.current_game);
+};
+
+Scene.prototype.game_over = function(){
+    this.current_game.destroy();
+    this.game_layer.removeChild(this.current_game);
+};
+
+Scene.prototype.get_game_class = function (name) {
+    //Game.debug(name, name.toCamel(), window[name.toCamel()]);
+    return window[name.toCamel()];
 };
 
 Scene.prototype.show_load = function (){
@@ -91,4 +110,25 @@ Scene.prototype.on_resize = function (){
 //
 //Scene.prototype.has_possible = function (){
 //
+//};
+//Scene.prototype.on_mousedown = function (e){
+//    this.dispatch_mouse_event("on_mousedown", e);
+//};
+//
+//Scene.prototype.on_mouseup = function (e){
+//    this.dispatch_mouse_event("on_mouseup", e);
+//};
+//
+//Scene.prototype.on_mousemove = function (e){
+//    this.dispatch_mouse_event("on_mousemove", e);
+//};
+//
+//Scene.prototype.dispatch_mouse_event = function(name, e){
+//    if (name != 'on_mousemove') console.log("disp_mouse", name, e.data.global);
+//    if (this.current_game){
+//        if (typeof this.current_game.mouse_event == 'function') this.current_game.mouse_event(name, e);
+//        return;
+//    }
+//
+//    //Game.debug("to scene");
 //};

@@ -1,10 +1,18 @@
 var COLOR_CNT = 6;
 var MAX_FIELD_SIZE = 8;
-var COR_X = 50;
-var COR_Y = 50;
+var COR_X = 0;
+var COR_Y = 0;
+var CUBE_WIDTH = 50;
+var CUBE_HEIGHT = 50;
 
 var ThreeMatchGameField = function(){
     PIXI.Container.call(this);
+
+    this.items = null;
+    this.item_on_mouse = {};
+
+    this.buttonMode = true;
+    this.interactive = true;
 };
 ThreeMatchGameField.prototype = Object.create(PIXI.Container.prototype);
 ThreeMatchGameField.prototype.constructor = ThreeMatchGameField;
@@ -13,6 +21,85 @@ ThreeMatchGameField.prototype.init = function(init_data, on_load) {
     this._init_data = init_data;
     this._on_load = on_load;
     this.load_art();
+
+    this
+        // events for drag start
+        .on('mousedown', this.on_mousedown)
+        .on('touchstart', this.on_mousedown)
+        // events for drag end
+        .on('mouseup', this.on_mouseup)
+        .on('mouseupoutside', this.on_mouseup)
+        .on('touchend', this.on_mouseup)
+        .on('touchendoutside', this.on_mouseup)
+        // events for drag move
+        .on('mousemove', this.on_mousemove)
+        .on('touchmove', this.on_mousemove);
+};
+
+ThreeMatchGameField.prototype.dispatch_mouse_event = function(name, e){
+    switch(name){
+        case "on_mousedown":{
+            var new_down_item = this.cube_on_mouse(e.data);
+            if (new_down_item == null) return;
+
+            if (this.item_on_mouse["sel_item"] != null){
+                if (new_down_item != this.item_on_mouse["sel_item"]){
+                    this.try_swap(this.item_on_mouse["sel_item"], new_down_item);
+                }
+                else {
+                    new_down_item.unselect();
+                    this.item_on_mouse = {};
+                }
+                return;
+            }
+            this.item_on_mouse = {down_item: new_down_item};
+            new_down_item.select();
+            break;
+        }
+        case "on_mouseup":{
+            var up_item = this.cube_on_mouse(e.data);
+            if (up_item == null) {
+                this.item_on_mouse = {sel_item: this.item_on_mouse.down_item};
+                return;
+            }
+
+            if (this.item_on_mouse.down_item && up_item == this.item_on_mouse.down_item)
+                this.item_on_mouse = {sel_item: up_item};
+            else
+                this.item_on_mouse = {};
+            break;
+        }
+        case "on_mousemove":{
+            if (this.item_on_mouse.down_item == null) return;
+
+            var old_move_item = this.item_on_mouse["move_item"];
+            var new_move_item = this.cube_on_mouse(e.data);
+            this.item_on_mouse["move_item"] = new_move_item;
+            if (new_move_item && new_move_item != this.item_on_mouse.down_item && old_move_item != new_move_item ){
+                this.try_swap(this.item_on_mouse.down_item, new_move_item);
+            }
+            break;
+        }
+    }
+};
+
+ThreeMatchGameField.prototype.try_swap = function (c1, c2){
+    Game.debug("try_swap", c1.toString(), c2.toString());
+    this.item_on_mouse = {};
+
+    var correct = true; //todo: check distance and others
+    if (correct){
+        this.swap(c1, c2);
+    }
+};
+
+ThreeMatchGameField.prototype.swap = function (c1, c2){
+    this.items[c1.col][c1.row] = c2;
+    this.items[c2.col][c2.row] = c1;
+    var c1_pos = c1.copy_position();
+    var c2_pos = c2.copy_position();
+    c1.move_to(c2_pos);
+    c2.move_to(c1_pos);
 };
 
 ThreeMatchGameField.prototype.load_art = function () {
@@ -29,7 +116,7 @@ ThreeMatchGameField.prototype.load_art = function () {
 ThreeMatchGameField.prototype.on_art_loaded = function () {
     Game.debug("PIXI.loader=", PIXI.loader);
 
-    this.write_matrix();
+    this.items = this.write_matrix();
 
     this._on_load();
 };
@@ -38,7 +125,6 @@ ThreeMatchGameField.prototype.is_valid_data = function(){
     return true;//todo realize
 };
 
-
 ThreeMatchGameField.prototype.write_matrix = function (){
     var mx = [];
     for(var col = 0; col < MAX_FIELD_SIZE; col++) {
@@ -46,11 +132,12 @@ ThreeMatchGameField.prototype.write_matrix = function (){
         for (var row = 0; row < MAX_FIELD_SIZE; row++) {
             var c = this.random_cub(col, row, this._init_data['field'][row][col]);
             mx[col][row] = c;
-            c.x = col * c.width + COR_X;
-            c.y = row * c.height + COR_Y;
+            c.x = col * CUBE_WIDTH + COR_X;
+            c.y = row * CUBE_HEIGHT + COR_Y;
             this.addChild(c);
         }
     }
+    return mx;
 };
 
 ThreeMatchGameField.prototype.random_cub = function(col, row, cell_type){
@@ -58,15 +145,21 @@ ThreeMatchGameField.prototype.random_cub = function(col, row, cell_type){
     return new Cube(color, col, row, cell_type);
 };
 
-//ThreeMatchGameField.prototype.on_cube_select = function (cube) {
-//    if (cube.selected){
-//        cube.unselect();
-//        cube.rotation = 0;
-//        TweenLite.to(cube, 0.5, {rotation: Math.PI, alpha: 1});
-//    }
-//    else {
-//        cube.select();
-//        cube.rotation = 0;
-//        TweenLite.to(cube, 0.5, {rotation: Math.PI, alpha: 0.1});
-//    }
-//};
+ThreeMatchGameField.prototype.cube_on_mouse = function (data){
+    var col = Math.floor((data.global.x - COR_X) / CUBE_WIDTH);
+    var row = Math.floor((data.global.y - COR_Y) / CUBE_HEIGHT);
+
+    return this.items && this.items[col] ? this.items[col][row] : null;
+};
+
+ThreeMatchGameField.prototype.on_mousedown = function (e){
+    this.dispatch_mouse_event("on_mousedown", e);
+};
+
+ThreeMatchGameField.prototype.on_mouseup = function (e){
+    this.dispatch_mouse_event("on_mouseup", e);
+};
+
+ThreeMatchGameField.prototype.on_mousemove = function (e){
+    this.dispatch_mouse_event("on_mousemove", e);
+};

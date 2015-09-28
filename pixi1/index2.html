@@ -29,7 +29,7 @@
     <script type="text/javascript" src="js/proj2/scene.js"></script>
     <script type="text/javascript" src="js/proj2/three_match/three_match_game.js"></script>
     <script type="text/javascript" src="js/proj2/three_match/three_match_game_field.js"></script>
-    <script type="text/javascript" src="js/proj2/cube.js"></script>
+    <script type="text/javascript" src="js/proj2/three_match/cube.js"></script>
     <script type="text/javascript" src="js/common/game.js"></script>
 
 
@@ -70,7 +70,7 @@
     <script type="text/javascript">
         function load_field(){
             var con = $("#field").val();
-            var game_data = {field: con.split('\n')};
+            var game_data = {name: "three_match_game", field: con.split('\n')};
             Game.scene.start_game(game_data);
         }
 

@@ -16,3 +16,10 @@ TextUtils.prototype.get_text = function(text, width){
 
     return new PIXI.Text(text, style);
 };
+
+if (typeof String.prototype.toCamel !== 'function') {
+    String.prototype.toCamel = function(){
+        var str = this.replace(/[-_]([a-z])/g, function (g) { return g[1].toUpperCase(); });
+        return str.charAt(0).toUpperCase() + str.substring(1);
+    };
+}
