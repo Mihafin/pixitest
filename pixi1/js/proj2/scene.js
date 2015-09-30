@@ -3,6 +3,7 @@ var Scene = function(){
     this.loading = Game.utils.text.get_text("loading..");
     this.game_layer = new PIXI.Container();
     this.map_layer = new PIXI.Container();
+    this.gui_layer = new PIXI.Container();
 };
 
 Scene.prototype = Object.create(PIXI.Container.prototype);
@@ -14,7 +15,14 @@ Scene.prototype.init = function (){
     //deb_text.y = Game.get_size()['h']/2;
     //this.addChild(deb_text);
 
+    this.game_layer.x = 40;
     this.addChild(this.game_layer);
+
+    this.setting_bar = new SettingsBar();
+    this.setting_bar.x = 20;
+    this.setting_bar.y = 20;
+    this.gui_layer.addChild(this.setting_bar);
+    this.addChild(this.gui_layer);
 };
 
 Scene.prototype.start_game = function(data){

@@ -1,6 +1,7 @@
 var SoundUtils = function (){
     this.audio_context = null;
     this.sounds_cache = {};
+    this.is_sound_on = true;
 
     this.init();
 };
@@ -15,6 +16,15 @@ SoundUtils.prototype.init = function() {
         this.log('Web Audio API is not supported in this browser: ', e.message);
     }
 };
+
+SoundUtils.prototype.sound_on = function() {
+    this.is_sound_on = true;
+};
+
+SoundUtils.prototype.sound_off = function() {
+    this.is_sound_on = false;
+};
+
 SoundUtils.prototype.is_sound_ready = function(url){
     return this.sounds_cache[url] != null && this.sounds_cache[url]['buffer'] != null;
 };
@@ -35,12 +45,13 @@ SoundUtils.prototype.load_and_play_sound = function(url, loop){
 };
 
 SoundUtils.prototype.play = function(sound_data, loop){
+    if (!this.is_sound_on) return;
+
     try {
         var source = this.audio_context.createBufferSource();   // creates a sound source
         source.buffer = sound_data['buffer'];                   // tell the source which sound to play
         source.connect(this.audio_context.destination);         // connect the source to the context's destination (the speakers)
-        source.start(0);                           // play the source now
-                                                   // note: on older systems, may have to use deprecated noteOn(time);
+        source.start(0);                                        // play the source now // note: on older systems, may have to use deprecated noteOn(time);
         source.loop = !!loop;
     }
     catch (e){
