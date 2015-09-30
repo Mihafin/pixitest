@@ -17,7 +17,7 @@ SettingsBar.prototype.init_sound_icon = function(){
 };
 
 SettingsBar.prototype.sound_icon_click = function(){
-    Game.sound_utils.is_sound_on = !Game.sound_utils.is_sound_on;
+    Game.sound_utils.set_sound_state(!Game.sound_utils.is_sound_on);
     this.show_sound_on_off_anim(Game.sound_utils.is_sound_on);
 };
 

@@ -1,7 +1,7 @@
 var SoundUtils = function (){
     this.audio_context = null;
     this.sounds_cache = {};
-    this.is_sound_on = true;
+    this.is_sound_on = true;//todo reset from storage
 
     this.init();
 };
@@ -17,12 +17,9 @@ SoundUtils.prototype.init = function() {
     }
 };
 
-SoundUtils.prototype.sound_on = function() {
-    this.is_sound_on = true;
-};
-
-SoundUtils.prototype.sound_off = function() {
-    this.is_sound_on = false;
+SoundUtils.prototype.set_sound_state = function(val) {
+    //todo: save state to storage
+    this.is_sound_on = val;
 };
 
 SoundUtils.prototype.is_sound_ready = function(url){
