@@ -150,8 +150,9 @@ ThreeMatchGameField.prototype.random_cub = function(col, row, cell_type){
 };
 
 ThreeMatchGameField.prototype.cube_on_mouse = function (data){
-    var col = Math.floor((data.global.x - COR_X) / CUBE_WIDTH);
-    var row = Math.floor((data.global.y - COR_Y) / CUBE_HEIGHT);
+    var inner_point = Game.utils.coord_utils.get_inner_coords(this, data.global);
+    var col = Math.floor((inner_point.x - COR_X) / CUBE_WIDTH);
+    var row = Math.floor((inner_point.y - COR_Y) / CUBE_HEIGHT);
 
     return this.items && this.items[col] ? this.items[col][row] : null;
 };
