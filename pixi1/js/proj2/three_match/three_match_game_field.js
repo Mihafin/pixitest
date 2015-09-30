@@ -16,11 +16,13 @@ var ThreeMatchGameField = function(){
 };
 ThreeMatchGameField.prototype = Object.create(PIXI.Container.prototype);
 ThreeMatchGameField.prototype.constructor = ThreeMatchGameField;
+ThreeMatchGameField.prototype.pop_sound = "assets/proj2/sounds/bubble_pop.mp3";
 
 ThreeMatchGameField.prototype.init = function(init_data, on_load) {
     this._init_data = init_data;
     this._on_load = on_load;
     this.load_art();
+    Game.sound_utils.load_sound(this.pop_sound);
 
     this
         // events for drag start
@@ -100,6 +102,8 @@ ThreeMatchGameField.prototype.swap = function (c1, c2){
     var c2_pos = c2.copy_position();
     c1.move_to(c2_pos);
     c2.move_to(c1_pos);
+
+    this.play_pop_sound();
 };
 
 ThreeMatchGameField.prototype.load_art = function () {
@@ -162,4 +166,8 @@ ThreeMatchGameField.prototype.on_mouseup = function (e){
 
 ThreeMatchGameField.prototype.on_mousemove = function (e){
     this.dispatch_mouse_event("on_mousemove", e);
+};
+
+ThreeMatchGameField.prototype.play_pop_sound = function(){
+    Game.sound_utils.play_now(this.pop_sound);
 };

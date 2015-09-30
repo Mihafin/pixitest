@@ -25,6 +25,7 @@
     <script type="text/javascript" src="js/common/utils/fullscreen.js"></script>
     <script type="text/javascript" src="js/common/utils/event_mix.js"></script>
     <script type="text/javascript" src="js/common/utils/storage.js"></script>
+    <script type="text/javascript" src="js/common/utils/sound_utils.js"></script>
 
     <script type="text/javascript" src="js/proj2/scene.js"></script>
     <script type="text/javascript" src="js/proj2/three_match/three_match_game.js"></script>
@@ -45,6 +46,10 @@
 //            PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
             var renderer = PIXI.autoDetectRenderer(size.w, size.h, {backgroundColor : 0x1099bb});
             Game.canvas_container.appendChild(renderer.view);
+
+            //sound_manager
+            Game.sound_utils = new SoundUtils();
+//            Game.sound_utils.load_and_play_sound("assets/proj2/sounds/ascend1.mp3");
 
             //main stage
             Game.scene = new Scene();

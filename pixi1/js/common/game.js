@@ -38,9 +38,9 @@ var Game = {
         Game.stats.end();
     },
     error: function(){
-        console.log("<--Error-->:", arguments);
+        if (console) console.log.apply(console, arguments);
     },
     debug: function(){
-        console.log("Debug:", arguments);
+        if (console) console.log.apply(console, arguments);
     }
 };
