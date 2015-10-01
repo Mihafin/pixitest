@@ -3,7 +3,8 @@ var Game = {
     utils: {
         text: new TextUtils(),
         store: new GameStorage(),
-        coord_utils: new CoordUtils()
+        coords: new CoordUtils(),
+        sound: new SoundUtils()
     },
     get_size: function (){
         var w = this.canvas_container.offsetWidth;

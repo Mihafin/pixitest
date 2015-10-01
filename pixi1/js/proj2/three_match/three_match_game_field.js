@@ -5,6 +5,11 @@ var COR_Y = 0;
 var CUBE_WIDTH = 50;
 var CUBE_HEIGHT = 50;
 
+var FLAG_DIST = 0x1;
+var FLAG_TYPE = 0x2;
+var FLAG_PTRN = 0x4;
+var ALL_FLAGS = FLAG_DIST | FLAG_TYPE | FLAG_PTRN;
+
 var ThreeMatchGameField = function(){
     PIXI.Container.call(this);
 
@@ -17,12 +22,15 @@ var ThreeMatchGameField = function(){
 ThreeMatchGameField.prototype = Object.create(PIXI.Container.prototype);
 ThreeMatchGameField.prototype.constructor = ThreeMatchGameField;
 ThreeMatchGameField.prototype.pop_sound = "assets/proj2/sounds/bubble_pop.mp3";
+ThreeMatchGameField.prototype.bell_sound = "assets/proj2/sounds/bell1.mp3";
+ThreeMatchGameField.prototype.can_swap = false;
 
 ThreeMatchGameField.prototype.init = function(init_data, on_load) {
     this._init_data = init_data;
     this._on_load = on_load;
     this.load_art();
-    Game.sound_utils.load_sound(this.pop_sound);
+    Game.utils.sound.load_sound(this.pop_sound);
+    Game.utils.sound.load_sound(this.bell_sound);
 
     this
         // events for drag start
@@ -44,9 +52,9 @@ ThreeMatchGameField.prototype.dispatch_mouse_event = function(name, e){
             var new_down_item = this.cube_on_mouse(e.data);
             if (new_down_item == null) return;
 
-            if (this.item_on_mouse["sel_item"] != null){
-                if (new_down_item != this.item_on_mouse["sel_item"]){
-                    this.try_swap(this.item_on_mouse["sel_item"], new_down_item);
+            if (this.item_on_mouse.sel_item != null){
+                if (new_down_item != this.item_on_mouse.sel_item){
+                    this.swap_process(this.item_on_mouse.sel_item, new_down_item);
                 }
                 else {
                     new_down_item.unselect();
@@ -74,28 +82,62 @@ ThreeMatchGameField.prototype.dispatch_mouse_event = function(name, e){
         case "on_mousemove":{
             if (this.item_on_mouse.down_item == null) return;
 
-            var old_move_item = this.item_on_mouse["move_item"];
+            var old_move_item = this.item_on_mouse.move_item;
             var new_move_item = this.cube_on_mouse(e.data);
-            this.item_on_mouse["move_item"] = new_move_item;
+            this.item_on_mouse.move_item = new_move_item;
             if (new_move_item && new_move_item != this.item_on_mouse.down_item && old_move_item != new_move_item ){
-                this.try_swap(this.item_on_mouse.down_item, new_move_item);
+                this.swap_process(this.item_on_mouse.down_item, new_move_item);
             }
             break;
         }
     }
 };
 
-ThreeMatchGameField.prototype.try_swap = function (c1, c2){
-    Game.debug("try_swap", c1.toString(), c2.toString());
-    this.item_on_mouse = {};
+ThreeMatchGameField.prototype.swap_process = function(first, second){
+    this.can_swap = this.check_swap(first, second);
+    var all_correct = (this.can_swap & ALL_FLAGS) == ALL_FLAGS;
+    if (all_correct){
+        this.swap(first, second);
+        return;
+    }
 
-    var correct = true; //todo: check distance and others
-    if (correct){
-        this.swap(c1, c2);
+    var distance_is_correct = (this.can_swap & FLAG_DIST) != 0;
+    if (!distance_is_correct){
+        this.renew_select(first, second);
+    }
+    else{
+        this.fail_swap(first, second);
     }
 };
 
+ThreeMatchGameField.prototype.renew_select = function(old_cube, new_cube){
+    old_cube.unselect();
+    new_cube.select();
+    this.item_on_mouse = {down_item: new_cube};
+};
+
+ThreeMatchGameField.prototype.check_swap = function (c1, c2){
+    var res = 0;
+    //distance
+    var dist_x = Math.abs(c1.col - c2.col);
+    var dist_y = Math.abs(c1.row - c2.row);
+    if ((dist_y == 0 && dist_x == 1) || (dist_y == 1 && dist_x == 0)){
+        res |= FLAG_DIST;
+    }
+    //type
+    if (c1.cell_type > 0 && c2.cell_type > 0){
+        res |= FLAG_TYPE;
+    }
+    //pattern
+    if (c1.color == c2.color){//stubed
+        res |= FLAG_PTRN;
+    }
+    return res;
+};
+
 ThreeMatchGameField.prototype.swap = function (c1, c2){
+    this.item_on_mouse = {};
+    c1.unselect();
     this.items[c1.col][c1.row] = c2;
     this.items[c2.col][c2.row] = c1;
     var c1_pos = c1.copy_position();
@@ -104,6 +146,15 @@ ThreeMatchGameField.prototype.swap = function (c1, c2){
     c2.move_to(c1_pos);
 
     this.play_pop_sound();
+};
+
+ThreeMatchGameField.prototype.fail_swap = function (c1, c2){
+    this.item_on_mouse = {};
+    c1.unselect();
+    c1.play_fail_anim();
+    c2.play_fail_anim();
+
+    this.play_bell_sound();
 };
 
 ThreeMatchGameField.prototype.load_art = function () {
@@ -150,7 +201,7 @@ ThreeMatchGameField.prototype.random_cub = function(col, row, cell_type){
 };
 
 ThreeMatchGameField.prototype.cube_on_mouse = function (data){
-    var inner_point = Game.utils.coord_utils.get_inner_coords(this, data.global);
+    var inner_point = Game.utils.coords.get_inner_coords(this, data.global);
     var col = Math.floor((inner_point.x - COR_X) / CUBE_WIDTH);
     var row = Math.floor((inner_point.y - COR_Y) / CUBE_HEIGHT);
 
@@ -170,5 +221,9 @@ ThreeMatchGameField.prototype.on_mousemove = function (e){
 };
 
 ThreeMatchGameField.prototype.play_pop_sound = function(){
-    Game.sound_utils.play_now(this.pop_sound);
+    Game.utils.sound.play_now(this.pop_sound);
+};
+
+ThreeMatchGameField.prototype.play_bell_sound = function(){
+    Game.utils.sound.play_now(this.bell_sound);
 };

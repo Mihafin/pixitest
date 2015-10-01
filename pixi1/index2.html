@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>pixi_test_2</title>
     <link rel="stylesheet" type="text/css" href="css/proj2/common.css"/>
-
     <script type="text/javascript" src="js/common/core/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/common/core/pixi.js"></script>
     <script type="text/javascript" src="js/common/core/stats.min.js"></script>
@@ -27,17 +26,13 @@
     <script type="text/javascript" src="js/common/utils/storage.js"></script>
     <script type="text/javascript" src="js/common/utils/sound_utils.js"></script>
     <script type="text/javascript" src="js/common/utils/common_utils.js"></script>
+    <script type="text/javascript" src="js/common/game.js"></script>
 
     <script type="text/javascript" src="js/proj2/scene.js"></script>
     <script type="text/javascript" src="js/proj2/three_match/three_match_game.js"></script>
     <script type="text/javascript" src="js/proj2/three_match/three_match_game_field.js"></script>
     <script type="text/javascript" src="js/proj2/three_match/cube.js"></script>
     <script type="text/javascript" src="js/proj2/ui/settings_bar.js"></script>
-    <script type="text/javascript" src="js/common/game.js"></script>
-
-
-
-
 
     <script type="text/javascript">
         window.onload = function(){
@@ -48,10 +43,6 @@
 //            PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
             var renderer = PIXI.autoDetectRenderer(size.w, size.h, {backgroundColor : 0x1099bb});
             Game.canvas_container.appendChild(renderer.view);
-
-            //sound_manager
-            Game.sound_utils = new SoundUtils();
-//            Game.sound_utils.load_and_play_sound("assets/proj2/sounds/ascend1.mp3");
 
             //main stage
             Game.scene = new Scene();

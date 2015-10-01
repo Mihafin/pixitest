@@ -1,8 +1,7 @@
 var SoundUtils = function (){
     this.audio_context = null;
     this.sounds_cache = {};
-    this.is_sound_on = true;//todo reset from storage
-
+    this.is_sound_on = true;
     this.init();
 };
 
@@ -18,7 +17,6 @@ SoundUtils.prototype.init = function() {
 };
 
 SoundUtils.prototype.set_sound_state = function(val) {
-    //todo: save state to storage
     this.is_sound_on = val;
 };
 

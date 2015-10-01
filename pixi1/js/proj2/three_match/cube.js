@@ -30,10 +30,15 @@ Cube.prototype.unselect = function(){
 };
 
 Cube.prototype.move_to = function(cube_position){
-    this.unselect();
     TweenLite.to(this, 0.5, {x: cube_position.x, y: cube_position.y});
     this.col = cube_position.col;
     this.row = cube_position.row;
+};
+
+Cube.prototype.play_fail_anim = function(){
+    var t = new TimelineLite();
+    t.to(this, 0.05, {rotation: Math.PI/8});
+    t.to(this, 0.05, {rotation: 0});
 };
 
 Cube.prototype.copy_position = function(){

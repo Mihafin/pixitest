@@ -1,5 +1,5 @@
-var GameStorage = function (){
-    this.main_key = "_game_1_";
+var GameStorage = function (main_key){
+    this.main_key = main_key || "_game_1_";
     this.is_support = this.support();
     if (!this.is_support){ console.log("storage is not support!")}
 };
