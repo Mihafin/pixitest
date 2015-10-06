@@ -1,6 +1,8 @@
 var Scene = function(){
     PIXI.Container.call(this);
     this.loading = Game.utils.text.get_text("loading..");
+    this.loading.x = Game.width / 2 - this.loading.width / 2;
+    this.loading.y = Game.height / 2 - this.loading.height / 2;
     this.game_layer = new PIXI.Container();
     //this.map_layer = new PIXI.Container();
     this.gui_layer = new PIXI.Container();
@@ -12,10 +14,16 @@ Scene.prototype.constructor = Scene;
 Scene.prototype.init = function (){
     Game.utils.sound.set_sound_state(Game.utils.store.get('sound') != "0");
 
-    //var deb_text = Game.utils.text.get_text("HIHIHIHIHIHIHIHIHI", 300);
-    //deb_text.x = Game.get_size()['w']/2;
-    //deb_text.y = Game.get_size()['h']/2;
-    //this.addChild(deb_text);
+    var deb_text = Game.utils.text.get_text(Game.social_api.me.first_name + "\n" + Game.social_api.me.last_name, 300);
+    deb_text.x = Game.width - deb_text.width;
+    deb_text.y = Game.height / 2;
+    this.addChild(deb_text);
+
+    var me_icon = new PIXI.Sprite.fromImage(Game.social_api.me.img50);
+    me_icon.x = Game.width - 50;
+    me_icon.y = 0;
+    this.addChild(me_icon);
+
 
     this.game_layer.x = 40;
     this.addChild(this.game_layer);
@@ -45,9 +53,10 @@ Scene.prototype.start_game = function(data){
 };
 
 Scene.prototype.game_inited = function(){
+    Game.debug("Start game!", this.current_game._init_data);
     this.hide_load();
     this.game_layer.addChild(this.current_game);
-    TweenLite.from(this.current_game, 2, {alpha: 0});
+    TweenLite.from(this.current_game, 1, {alpha: 0});
 };
 
 Scene.prototype.game_over = function(){

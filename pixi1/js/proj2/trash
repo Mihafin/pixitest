@@ -1,0 +1,64 @@
+
+
+//function on_splash_loaded(){
+//
+//    var renderer = PIXI.autoDetectRenderer(Game.width, Game.height, {backgroundColor: 0xFFFFFF});
+//    Game.canvas_container.appendChild(renderer.view);
+//
+//    var tx = PIXI.loader.resources["splash"].texture;
+//    Game.loader = new PIXI.Sprite(tx);
+//    Game.loader.x = Game.width/2 - tx.width;
+//    Game.loader.y = Game.height/2 - tx.height;
+//
+//    load_main_scene();
+//
+//    animate();
+//    function animate() {
+//        if (Game.stats) Game.stats_begin();
+//        if (Game.scene) renderer.render(Game.scene);
+//        if (Game.loader) renderer.render(Game.loader);
+//        if (Game.stats) Game.stats_end();
+//        requestAnimationFrame(animate);
+//    }
+//
+//}
+//function load_main_scene(){
+//    all_list = Game.game_resources;
+//    for (var i = 0; i < all_list.length; i++){
+//        load_script(all_list[i], function(){on_resource_loaded(game_resources_loaded);});
+//    }
+//}
+//var PIXIResourceLoader = {
+//    start_load: function (log_pref, res_list, cb_func){
+//    art_load_progress();
+//      for (var i = 0; i < Game.loader_assets.length; i++) {
+//          var d = Game.loader_assets[i];
+//          PIXI.loader.add(d.name, d.url);
+//      }
+//      PIXI.loader.load(on_splash_loaded);
+//    }
+//};
+//PIXIResourceLoader.prototype = ResourceLoader;
+//
+//var res_loaded = 0;
+//var all_list = null;
+//
+//function load_resources(log_pref, res_list, cb){
+//    all_list = res_list;
+//    res_load_progress(0, all_list.length);
+//    for (var i = 0; i < all_list.length; i++){
+//        load_script(all_list[i], function(){on_resource_loaded(init_resources_loaded);});
+//    }
+//}
+//
+//function res_load_progress(cur, all){
+//    set_progress("Загрузка ресурсов (" + cur + "/" + all + ")..");
+//}
+//
+//function art_load_progress(){
+//    set_progress("Загрузка арта..");
+//}
+
+    loader_assets: [
+        {name: "splash", url: "assets/common/bunny.png"}
+    ]

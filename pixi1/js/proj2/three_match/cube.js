@@ -11,6 +11,9 @@ var Cube = function(color, col, row, cell_type){
 
     var tx = PIXI.loader.resources['c'+color].texture;
     var sp = new PIXI.Sprite(tx);
+    //sp.anchor = new PIXI.Point(0.5, 0.5);
+    //sp.x = sp.width * 0.5;
+    //sp.y = sp.height * 0.5;
     this.addChild(sp);
 };
 
@@ -30,7 +33,8 @@ Cube.prototype.unselect = function(){
 };
 
 Cube.prototype.move_to = function(cube_position){
-    TweenLite.to(this, 0.5, {x: cube_position.x, y: cube_position.y});
+    var t = new TimelineLite();
+    t.to(this, 0.5, {x: cube_position.x, y: cube_position.y});
     this.col = cube_position.col;
     this.row = cube_position.row;
 };

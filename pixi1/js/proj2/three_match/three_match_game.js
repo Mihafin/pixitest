@@ -26,7 +26,6 @@ ThreeMatchGame.prototype.show_game = function(){
         return;
     }
 
-    Game.debug("start game!", this._init_data);
     this.addChild(this._game_field);
     this._ready_cb();
 };

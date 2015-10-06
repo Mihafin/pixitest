@@ -169,10 +169,7 @@ ThreeMatchGameField.prototype.load_art = function () {
 };
 
 ThreeMatchGameField.prototype.on_art_loaded = function () {
-    Game.debug("PIXI.loader=", PIXI.loader);
-
     this.items = this.write_matrix();
-
     this._on_load();
 };
 

@@ -22,5 +22,6 @@ SettingsBar.prototype.sound_icon_click = function(){
 };
 
 SettingsBar.prototype.show_sound_anim = function(is_on){
-    TweenLite.to(this.sound_icon, 0.5, {rotation: is_on ? 0 : Math.PI});
+    var tl = new TimelineLite();
+    tl.to(this.sound_icon, 0.5, {rotation: is_on ? 0 : Math.PI});
 };
