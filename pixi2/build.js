@@ -1,6 +1,9 @@
 ({
-    baseUrl: ".",
+    baseUrl: "./js",
+    paths: {
+        jquery: "core/jquery.min"
+    },
     name: "main",
-    out: "main-built.js"
+    out: "js/main-built.js"
 })
 
