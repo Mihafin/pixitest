@@ -1,0 +1,6 @@
+~/node_js/bin/node r.js -o build.js
+
+#trash
+//["timeline_lite"]
+//var t = new TimelineLite();
+//t.from(renderer, 2, {backgroundColor: 0xccccff});
