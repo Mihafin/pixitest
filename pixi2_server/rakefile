@@ -1,0 +1,27 @@
+task :migrate do
+  cmd = 'db-migrate up -e local'
+  system(cmd)
+end
+
+# ************ psql *********
+# psql -p 5433 -d pixi2 -U postgres
+# \d+ tablename
+# \dt
+
+# ****** db-migrate  ********
+# https://www.npmjs.com/package/db-migrate
+# db-migrate up -e local
+# db-migrate create add-people --sql-file
+# db-migrate up --config config/database.json -e prod
+# db-migrate up 20111219
+
+
+# ************* interest ***********
+# http://davidhunt.io/making-a-new-node-js-app-feel-more-like-rails-part-1
+
+
+# ********** knex migrations (depricated) ****************
+# knex migrate:make migration_name
+# knex.schema.raw("SET sql_mode='TRADITIONAL'")
+# knex migrate:rollback --env local
+

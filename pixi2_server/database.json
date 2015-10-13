@@ -1,0 +1,10 @@
+{
+  "local": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": "qwerty",
+    "host": "localhost",
+    "port": 5433,
+    "database": "pixi2"
+  }
+}
